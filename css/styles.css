@@ -513,8 +513,18 @@ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   position: fixed;
   top: 0;
   background-color: rgba(46, 47, 66, 0.4);
-
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
+
+.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
 
 .modal {
   padding: 24px;
@@ -540,9 +550,15 @@ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   height: 24px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  background: #fcfcfc;
+  background-color: #e7e9fc;
+}
+
+.modal-close-btn:hover {
+  background-color: #404bbf;
+}
+
+.modal-close-btn:hover .modal-btn {
+  fill: #fff;
 }
 
 .modal-btn {
@@ -560,8 +576,14 @@ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-filed {
-  margin-bottom: 18px;
+  margin-bottom: 8px;
 }
+
+.modal-filed-wrap {
+  margin-top: 4px;
+  position: relative;
+}
+
 
 .modal-input {
   width: 100%;
@@ -572,6 +594,7 @@ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   padding-left: 38px;
   padding-right: 16px;
   outline: transparent;
+
 }
 
 .modal-input::placeholder {
@@ -582,27 +605,40 @@ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   color: #8e8f99;
 }
 
-.modal-filed-wrap {
-  position: relative;
+.name-line {
+  font-size: 12px;
+  line-height: 1.16667;
+  letter-spacing: 0.04em;
+  color: #8e8f99;
 }
 
 .modal-input:focus {
   border: 1px solid #4d5ae5;
 }
 
-.modal-input:focus+.modal-icon {
-  fill: #4d5ae5;
-}
 
 .modal-icon {
-  fill: #4d5ae5;
-  stroke: #4d5ae5;
+  fill: #2e2f42;
   position: absolute;
   left: 19px;
   top: 50%;
   transform: translateY(-50%);
 }
 
+
+.modal-icon-phone,
+.modal-icon-email {
+  position: absolute;
+  left: 19px;
+  margin-top: 13px;
+}
+.modal-input:focus {
+  fill: #4d5ae5;
+}
+.modal-icon:hover {
+  fill: #4d5ae5;
+
+}
 .modal-comment {
   width: 100%;
   border: 1px solid rgba(46, 47, 66, 0.4);
@@ -615,14 +651,57 @@ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   resize: none;
 }
 
-.comment-filed {}
-
-.text-input {
+.comment-filed {
   font-weight: 400;
   font-size: 12px;
   line-height: 1.16667;
   letter-spacing: 0.04em;
   color: rgba(46, 47, 66, 0.4);
+  margin-bottom: 16px;
 
+}
 
+.review-btn-modal {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.modal-filed-check {
+  margin-bottom: 24px;
+}
+
+.modal-check-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.16667;
+  letter-spacing: 0.04em;
+  color: #8e8f99;
+  
+
+}
+
+.modal-check-text span {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 2px;
+  fill: transparent;
+  border: 1px solid #404bbf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-check:checked+.modal-check-text span {
+ background-color: #404bbf;
+ border: none;
+ fill: #f4f4fd;
+}
+
+.privacy-policy-link {
+  color: #4d5ae5;
+  text-decoration: underline;
 }
